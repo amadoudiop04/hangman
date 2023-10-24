@@ -1,0 +1,197 @@
+package main
+
+import (
+	"bufio"
+    "fmt"
+    "os"
+    "math/rand"
+    "time"
+	"runtime"
+)
+
+func main () {
+	file, err := os.open("word.txt")
+if i != nil {
+	fmt.Println("erreur lors de l'ouverture du fichier :")
+	return
+}
+defer file close()
+ // Créer un scanner pour lire le fichier ligne par ligne
+ scanner := bufio.NewScanner(file)
+    
+ // Créer un générateur de nombres aléatoires
+ rand.Seed(time.Now().UnixNano())
+ 
+ // Lire le fichier ligne par ligne
+ var mots []string
+ for scanner.Scan() {
+	 mots = append(mots, scanner.Text())
+ }
+ 
+ // Générer un indice aléatoire
+ indiceAleatoire := rand.Intn(len(mots))
+ 
+ // Récupérer le mot aléatoire
+ motAleatoire := mots[indiceAleatoire]
+ 
+ // Afficher le mot aléatoire
+ fmt.Println("Mot choisi au hasard :", motAleatoire)
+}
+
+func  init() {
+	rand.Seed(time.now().unix.UnixNano)
+}
+
+var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+func RandStringRunes(n int) string{
+	b := make ([]rune, n)
+	for i := range b {
+	b[i] := letterRunes[Rand.Intn(len(letterRunes))]
+	}
+	return string(b)
+}
+if (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') {
+	fmt.Println("Vous avez entré la lettre %c\n", char)
+} else {
+	fmt.Println("Ce n'est pas une lettre.")
+}
+
+//la lettre n'est pas presente
+func main() {
+	motdepasse := "secret"
+	essairestante := 10 
+	for essairestante > 0 {
+		var lettre string
+		fmt.Println("entrez une lettre : ")
+		fmt.Println(&&lettre)
+
+		if stringscontains(motdepasse, lettre)
+		break 
+	}else{
+	essairestante--
+	if essairestante == 0 {
+		fmt.Println("plus de tentative restante, donc access refusé")
+	}else{
+		fmt.Println("lettre non trouvée tentatives restantes : %d\n")
+		}
+	}l
+	}
+
+	func main() {
+    mot := ""
+    
+    // La lettre que vous souhaitez afficher
+    lettreAChercher := ''
+    
+    fmt.Println("Lettres correspondantes à '%c' dans '%s': ", lettreAChercher, mot)
+    
+    for _, caractere := range mot {
+        if caractere == lettreAChercher {
+            fmt.Println("%c ", caractere)
+        } else {
+            fmt.Println("_ ")
+        }
+    }
+    fmt.Println()
+}
+	
+	func main() {
+		motADeviner := "bonjour"
+		lettreAChercher := 'o'
+		tentativesRestantes := 5
+		lettresTrouvees := make([]bool, len(motADeviner))
+		motTrouve := false
+	
+		fmt.Println("Bienvenue au jeu du Pendu!")
+	
+		for tentativesRestantes > 0 && !motTrouve {
+			fmt.Printf("Mot à deviner: %s\n", afficherMot(motADeviner, lettresTrouvees))
+			fmt.Printf("Tentatives restantes: %d\n", tentativesRestantes)
+	
+			var lettre string
+			fmt.Print("Devinez une lettre: ")
+			fmt.Scanln(&lettre)
+			lettre = strings.ToLower(lettre) // Convertir en minuscules pour éviter la casse
+	
+			if len(lettre) != 1 || !estLettre(lettre[0]) {
+				fmt.Println("Veuillez saisir une seule lettre valide.")
+				continue
+			}
+	
+			lettreSaisie := lettre[0]
+			lettreTrouvee := false
+	
+			for i, char := range motADeviner {
+				if char == rune(lettreSaisie) {
+					lettresTrouvees[i] = true
+					lettreTrouvee = true
+				}
+			}
+	
+			if lettreTrouvee {
+				fmt.Println("Bonne devinette!")
+			} else {
+				fmt.Println("Mauvaise devinette.")
+				tentativesRestantes--
+			}
+	
+			motTrouve = motEntierTrouve(motADeviner, lettresTrouvees)
+		}
+	
+		if motTrouve {
+			fmt.Printf("Bravo, vous avez trouvé le mot: %s\n", motADeviner)
+		} else {
+			fmt.Printf("Désolé, vous n'avez pas trouvé le mot. Le mot était: %s\n", motADeviner)
+		}
+	}
+	
+	func afficherMot(mot string, lettresTrouvees []bool) string {
+		var motAffiche strings.Builder
+	
+		for i, char := range mot {
+			if lettresTrouvees[i] {
+				motAffiche.WriteString(string(char))
+			} else {
+				motAffiche.WriteString("_")
+			}
+			motAffiche.WriteString(" ")
+		}
+	
+		return motAffiche.String()
+	}
+	
+	func estLettre(c byte) bool {
+		return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+	}
+	
+	func motEntierTrouve(mot string, lettresTrouvees []bool) bool {
+		for _, trouvee := range lettresTrouvees {
+			if !trouvee {
+				return false
+			}
+		}
+		return true
+	}
+
+	func displayPosition(attempts int) {
+		_, file, line, ok := runtime.Caller(1)
+		
+		if ok {
+			fmt.Println("Fichier : %s\n", file)
+			fmt.Println("Ligne : %d\n", line)
+			fmt.Println("Nombre de tentatives restantes : %d\n", attempts)
+		} else {
+			fmt.Println("Impossible de déterminer la position.")
+		}
+	}
+	
+	func main() {
+		for attempts := 10; attempts >= 0; attempts-- {
+			displayPosition(attempts)
+		}
+	}
+	
+	
+	
+	
