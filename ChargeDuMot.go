@@ -40,7 +40,7 @@ func displayWord(word string, revealed []bool) {
 	for i, char := range word {
 		if revealed[i] {
 			fmt.Printf("%c ", char)
-		} else {
+		} else {	
 			fmt.Print("_ ")
 		}
 	}
