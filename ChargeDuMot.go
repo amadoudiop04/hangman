@@ -30,12 +30,12 @@ func ChargeDuMot(filename string) ([]string, error) {
 }
 
 // chooseRandomWord sélectionne un mot aléatoire dans une tranche de mots.
-func chooseRandomWord(words []string) string {
+func ChooseRandomWord(words []string) string {
 	return words[rand.Intn(len(words))]
 }
 
 // displayWord affiche l'état actuel du mot avec les lettres révélées et non révélées.
-func displayWord(word string, revealed []bool) {
+func DisplayWord(word string, revealed []bool) {
 	fmt.Print("Mot : ")
 	for i, char := range word {
 		if revealed[i] {
@@ -48,7 +48,7 @@ func displayWord(word string, revealed []bool) {
 }
 
 // revealLetters met à jour la tranche révélée en fonction de la lettre devinée.
-func revealLetters(word, guess string, revealed []bool) {
+func RevealLetters(word, guess string, revealed []bool) {
 	for i, char := range word {
 		if string(char) == guess {
 			revealed[i] = true
@@ -57,7 +57,7 @@ func revealLetters(word, guess string, revealed []bool) {
 }
 
 // isWordComplete vérifie si toutes les lettres du mot sont révélées.
-func isWordComplete(revealed []bool) bool {
+func IsWordComplete(revealed []bool) bool {
 	for _, val := range revealed {
 		if !val {
 			return false
@@ -67,7 +67,7 @@ func isWordComplete(revealed []bool) bool {
 }
 
 // readGuess lit une supposition de l'utilisateur depuis la console.
-func readGuess() string {
+func ReadGuess() string {
 	reader := bufio.NewReader(os.Stdin)
 	guess, _ := reader.ReadString('\n')
 	return strings.TrimSpace(guess)

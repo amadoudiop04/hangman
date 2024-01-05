@@ -22,7 +22,7 @@ func RechercheMot() {
     rand.Seed(time.Now().UnixNano())
 
     // Choisir un mot au hasard parmi ceux chargés
-    word := chooseRandomWord(words)
+    word := ChooseRandomWord(words)
 
     // Nombre de tentatives autorisées
     attempts := 10
@@ -36,13 +36,13 @@ func RechercheMot() {
     // Boucle principale du jeu
     for attempts > 0 {
         // Afficher l'état actuel du mot avec les lettres révélées
-        displayWord(word, revealedLetters)
+        DisplayWord(word, revealedLetters)
         fmt.Print("Suggérer une lettre: ")
-        guess := readGuess()
+        guess := ReadGuess()
 
         // Vérifier si la lettre proposée est dans le mot
         if strings.Contains(word, guess) {
-            revealLetters(word, guess, revealedLetters)
+            RevealLetters(word, guess, revealedLetters)
         } else {
             // Si la lettre proposée n'est pas dans le mot, réduire le nombre de tentatives et afficher la position du pendu
             attempts--
@@ -51,7 +51,7 @@ func RechercheMot() {
         }
 
         // Vérifier si le mot a été entièrement deviné
-        if isWordComplete(revealedLetters) {
+        if IsWordComplete(revealedLetters) {
             fmt.Println("Félicitations! Vous avez trouvé le mot:", word)
             break
         }

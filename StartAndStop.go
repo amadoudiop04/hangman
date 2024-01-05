@@ -18,7 +18,7 @@ func StartAndStop() {
 
 	// Vérifiez si le jeu doit être démarré avec une sauvegarde précédente
 	if len(os.Args) == 2 && os.Args[1] == "--startWith" {
-		loadGame(&game, "save.txt")
+		LoadGame(&game, "save.txt")
 	} else {
 		// Initialiser un nouveau jeu
 		game = GameState{
@@ -30,7 +30,7 @@ func StartAndStop() {
 
 	// Boucle principale du jeu
 	for {
-		displayGameState(game)
+		DisplayGameState(game)
 
 		// Lire l'entrée utilisateur
 		var input string
@@ -39,7 +39,7 @@ func StartAndStop() {
 
 		// Vérifier si l'utilisateur veut arrêter le jeu
 		if input == "STOP" {
-			saveGame(game, "save.txt")
+			SaveGame(game, "save.txt")
 			fmt.Println("Jeu enregistré. Au revoir!")
 			os.Exit(0)
 		}
@@ -52,12 +52,12 @@ func StartAndStop() {
 	}
 }
 
-func displayGameState(game GameState) {
+func DisplayGameState(game GameState) {
 	// Afficher l'état actuel du jeu
 	// ...
 }
 
-func saveGame(game GameState, filename string) {
+func SaveGame(game GameState, filename string) {
 	// Convertir l'état du jeu en JSON
 	data, err := json.Marshal(game)
 	if err != nil {
@@ -72,7 +72,7 @@ func saveGame(game GameState, filename string) {
 	}
 }
 
-func loadGame(game *GameState, filename string) {
+func LoadGame(game *GameState, filename string) {
 	// Lire les données JSON à partir du fichier
 	data, err := ioutil.ReadFile(filename)
 	if err != nil {
