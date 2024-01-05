@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/amadoudiop04/hangman-classic"
+	"github.com/amadoudiop04/hangman"
 )
 
 func main() {
