@@ -1,1 +1,1 @@
-{"Word":"hangman","Guesses":[],"Attempts":6}
+{"Word":"hangman","Guesses":["stop"],"Attempts":6}
