@@ -36,15 +36,20 @@ func ChooseRandomWord(words []string) string {
 
 // displayWord affiche l'état actuel du mot avec les lettres révélées et non révélées.
 func DisplayWord(word string, revealed []bool) {
-	fmt.Print("Mot : ")
-	for i, char := range word {
+	hint := GetHint(word, revealed)
+	fmt.Println("Mot :", hint)
+}
+
+func GetHint(word string, revealed []bool) string {
+	hints := []string{}
+	for i, letter := range word {
 		if revealed[i] {
-			fmt.Printf("%c ", char)
-		} else {	
-			fmt.Print("_ ")
+			hints = append(hints, string(letter))
+		} else {
+			hints = append(hints, "_")
 		}
 	}
-	fmt.Println()
+	return strings.Join(hints, "")
 }
 
 // revealLetters met à jour la tranche révélée en fonction de la lettre devinée.
